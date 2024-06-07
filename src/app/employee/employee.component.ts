@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-employee',
@@ -23,8 +24,8 @@ export class EmployeeComponent implements OnInit {
       "address" : this.address,
       "mobile" : this.mobile
     };
-
-    this.http.post("http://localhost:8085/api/v1/employee/save", bodyData).subscribe((result:any)=>
+    
+    this.http.post(`${environment.apiUrl}/api/v1/employee/save`, bodyData).subscribe((result:any)=>
     {
       console.log(result);
       alert("Employee Registered Successfully")
